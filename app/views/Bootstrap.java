@@ -3,7 +3,6 @@ import java.util.List;
 import play.*;
 import play.jobs.*;
 import play.test.*;
-
 import models.*;
 
 @OnApplicationStart
