@@ -1,7 +1,7 @@
 #{extends 'main.html' /}
-#{set title:'Dashboard' /}
+#{set title:'Admin' /}
 
-#{menu id:"dashboard"/}
+#{menu id:"admin"/}
 
 <section class="ui raised segment">
   <header class="ui header">
@@ -10,19 +10,20 @@
   <table class = "ui fixed table">
     <thead>
     <tr>
+      <th>ID</th>
       <th>To Do</th>
-      <th></th>
     </tr>
     </thead>
     <tbody>
     <div class="ui bulleted list">
       #{list items:todolist, as:'todo'}
-        <tr>
-          <td>${todo.title}</td>
-          <td><a href="/dashboard/deletetodo/${todo.id}" class="ui tiny red button"> Delete</a></td>
-        </tr>
+      <tr>
+        <td>${todo.id}</td>
+        <td>${todo.title}</td>
+      </tr>
       #{/list}
     </div>
+    <div class="ui bulleted list"></div>
     </tbody>
   </table>
 </section>

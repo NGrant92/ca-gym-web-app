@@ -5,8 +5,10 @@
 # Home page
 GET     /                                       Start.index
 GET     /dashboard                              Dashboard.index
+GET     /admin                                  Admin.index
 GET     /about                                  About.index
 POST    /dashboard/addTodo                      Dashboard.addTodo
+GET     /dashboard/deleteplaylist/{id}          Dashboard.deletePlaylist
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

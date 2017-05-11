@@ -1,0 +1,16 @@
+<table class = "ui fixed table">
+  <thead>
+  <tr>
+    <th>To Do</th>
+  </tr>
+  </thead>
+  <tbody>
+    #{list items:_Dashboard.todolist, as:'title'}
+    <tr>
+      <td>
+        ${Todo.title}
+      </td>
+    </tr>
+    #{/list}
+  </tbody>
+</table>
