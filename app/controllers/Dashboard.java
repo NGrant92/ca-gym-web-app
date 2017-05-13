@@ -10,10 +10,10 @@ public class Dashboard extends Controller
   public static void addAssessment(double weight, double chest, double thigh, double upperArm, double waist, double hips)
   {
     Member member = Accounts.getLoggedInMember();
-    Assessment newAssessment = new Assessment(weight, chest, thigh, upperArm, waist, hips);
+    Assessment newAssessment = new Assessment(weight, chest, thigh, upperArm, waist, hips, "");
     member.assessmentList.add(newAssessment);
     member.save();
-    Logger.info("Adding Assessment " + weight + ", " + chest + ", " + thigh + ", " + upperArm + ", " + waist + " and " + hips);
+    Logger.info("Adding Assessment " + weight + ", " + chest + ", " + thigh + ", " + upperArm + ", " + waist +  " and "  + hips);
     redirect("/dashboard");
   }
 
@@ -44,6 +44,7 @@ public class Dashboard extends Controller
     Logger.info("Adding address: " + address);
     redirect("/dashboard");
   }
+
   public static void setGender(String gender)
   {
     Member member = Accounts.getLoggedInMember();
@@ -52,6 +53,7 @@ public class Dashboard extends Controller
     Logger.info("Adding gender: " + gender);
     redirect("/dashboard");
   }
+
   public static void setHeight(double height)
   {
     Member member = Accounts.getLoggedInMember();
@@ -69,6 +71,4 @@ public class Dashboard extends Controller
     Logger.info("Adding weight: " + weight);
     redirect("/dashboard");
   }
-
-
 }

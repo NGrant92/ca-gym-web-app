@@ -13,8 +13,9 @@ public class Assessment extends Model
   public double upperArm;
   public double waist;
   public double hips;
+  public String comment;
 
-  public Assessment(double weight, double chest, double thigh, double upperArm, double waist, double hips)
+  public Assessment(double weight, double chest, double thigh, double upperArm, double waist, double hips, String comment)
   {
     this.weight = weight;
     this.chest = chest;
@@ -22,6 +23,7 @@ public class Assessment extends Model
     this.upperArm = upperArm;
     this.waist = waist;
     this.hips = hips;
+    this.comment = "";
   }
 
     //-------
@@ -74,5 +76,13 @@ public class Assessment extends Model
      */
     public double getHips() {
         return hips;
+    }
+
+    /**
+     * Returns the member's hip measurements in cm
+     * @return The member's hip measurements in cm
+     */
+    public String getComment() {
+        return comment;
     }
 }
