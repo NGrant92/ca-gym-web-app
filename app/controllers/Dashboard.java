@@ -7,13 +7,13 @@ import java.util.*;
 public class Dashboard extends Controller
 {
 
-  public static void addTodo(String title)
+  public static void addAssessment(double weight, double chest, double thigh, double upperArm, double waist, double hips)
   {
     Member member = Accounts.getLoggedInMember();
-    Todo todo = new Todo(title);
-    member.todolist.add(todo);
+    Assessment newAssessment = new Assessment(weight, chest, thigh, upperArm, waist, hips);
+    member.assessmentList.put(new Date(), newAssessment);
     member.save();
-    Logger.info("Adding Todo" + title);
+    Logger.info("Adding Assessment " + weight + chest + thigh + upperArm + waist + hips);
     redirect("/dashboard");
   }
 
@@ -32,7 +32,43 @@ public class Dashboard extends Controller
   {
     Logger.info("Rendering Dashboard");
     Member member = Accounts.getLoggedInMember();
-    List<Todo> todolist = member.todolist;
-    render("dashboard.html", member, todolist);
+    List<Assessment> assessmentList = member.assessmentList;
+    render("dashboard.html", member, assessmentList);
   }
+
+  public static void setAddress(String address)
+  {
+    Member member = Accounts.getLoggedInMember();
+    member.setAddress(address);
+    member.save();
+    Logger.info("Adding address: " + address);
+    redirect("/dashboard");
+  }
+  public static void setGender(String gender)
+  {
+    Member member = Accounts.getLoggedInMember();
+    member.setGender(gender);
+    member.save();
+    Logger.info("Adding gender: " + gender);
+    redirect("/dashboard");
+  }
+  public static void setHeight(double height)
+  {
+    Member member = Accounts.getLoggedInMember();
+    member.setHeight(height);
+    member.save();
+    Logger.info("Adding height: " + height);
+    redirect("/dashboard");
+  }
+
+  public static void setWeight(double weight)
+  {
+    Member member = Accounts.getLoggedInMember();
+    member.setWeight(weight);
+    member.save();
+    Logger.info("Adding weight: " + weight);
+    redirect("/dashboard");
+  }
+
+
 }

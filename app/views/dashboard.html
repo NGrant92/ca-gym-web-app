@@ -5,25 +5,29 @@
 
 <section class="ui raised segment">
   <header class="ui header">
-    ${member.firstname} ${member.lastname}'s Todo List
+    ${member.firstname} ${member.lastname}'s Progress
   </header>
-    Todo List
+    Assessment
   </header>
   <table class = "ui fixed table">
     <thead>
     <tr>
-      <th>To Do</th>
-      <th></th>
+        <h4 class="ui horizontal divider header">
+        <th class="four wide column">Weight</th>
+        <th class="four wide column">Chest</th>
+        <th class="four wide column">Thigh</th>
+        <th class="four wide column">Upper Arm</th>
+        <th class="four wide column">Waist</th>
+        <th class="four wide column">Hips</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
     <div class="ui bulleted list">
-      #{list items:todolist, as:'todo'}
         <tr>
-          <td>${todo.title}</td>
-          <td> <a href="/dashboard/${member.id}/deletetodo/${todo.id} " class="ui tiny red button"> Delete </a> </td>
+          <td>${member.address}</td>
+          <td></td>
         </tr>
-      #{/list}
     </div>
     </tbody>
   </table>
