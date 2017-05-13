@@ -24,10 +24,17 @@
     </thead>
     <tbody>
     <div class="ui bulleted list">
+        #{list items:assessmentList, as:'assessments'}
         <tr>
-          <td>${member.address}</td>
-          <td></td>
+            <td>${assessments.getWeight()}</td>
+            <td>${assessments.getChest()}</td>
+            <td>${assessments.getThigh()}</td>
+            <td>${assessments.getUpperArm()}</td>
+            <td>${assessments.getWaist()}</td>
+            <td>${assessments.getHips()}</td>
+            <td></td>
         </tr>
+        #{/list}
     </div>
     </tbody>
   </table>

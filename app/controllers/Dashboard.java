@@ -11,20 +11,20 @@ public class Dashboard extends Controller
   {
     Member member = Accounts.getLoggedInMember();
     Assessment newAssessment = new Assessment(weight, chest, thigh, upperArm, waist, hips);
-    member.assessmentList.put(new Date(), newAssessment);
+    member.assessmentList.add(newAssessment);
     member.save();
-    Logger.info("Adding Assessment " + weight + chest + thigh + upperArm + waist + hips);
+    Logger.info("Adding Assessment " + weight + ", " + chest + ", " + thigh + ", " + upperArm + ", " + waist + " and " + hips);
     redirect("/dashboard");
   }
 
-  public static void deleteTodo(Long id, Long todoid)
+  public static void deleteAssessment(Long ID, Long assessID)
   {
-    Member member = Member.findById(id);
-    Todo todo = Todo.findById(todoid);
-    member.todolist.remove(todo);
+    Member member = Member.findById(ID);
+    Assessment remAssess = Assessment.findById(assessID);
+    member.assessmentList.remove(assessID);
     member.save();
-    todo.delete();
-    Logger.info("Deleting " + todo.title);
+    remAssess.delete();
+    Logger.info("Deleting Assessment");
     redirect("/dashboard");
   }
 

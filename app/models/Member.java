@@ -8,6 +8,8 @@ import javax.persistence.OneToMany;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.*;
 
 @Entity
 public class Member extends Model
@@ -22,7 +24,7 @@ public class Member extends Model
     public double weight;
 
     @OneToMany(cascade = CascadeType.ALL)
-    public HashMap<Date, Assessment> assessmentList = new HashMap<>();
+    public List<Assessment> assessmentList = new ArrayList<Assessment>();
 
     public Member(String firstname, String lastname, String email, String password, String address, String gender, double height, double weight)
     {
@@ -34,6 +36,7 @@ public class Member extends Model
         this.gender = gender;
         this.height = height;
         this.weight = weight;
+
     }
 
     public static Member findByEmail(String email) {
@@ -59,4 +62,35 @@ public class Member extends Model
     public void setWeight(double weight){
         this.weight = weight;
     }
+
+    /**
+     * Adds a new assessment to the the member's Assessment HashMap
+     * @param newAssessment The assessment object to be added to the member's assessment HashMap
+
+    public void addAssessment(String date, Assessment newAssessment){
+
+        assessmentList = new HashMap<>();
+        assessmentList.put(date, newAssessment);
+
+    }
+
+    /**
+     * Returns the latest assessment based on last entry (by calendar date).
+     * @return Returns the latest assessment based on last entry (by calendar date).
+
+    public Assessment latestAssessment(){
+
+        return assessmentList.get(sortedAssessmentDates().last());
+
+    }
+
+    /**
+     * Returns the assessments dates sorted in date order.
+     * @return Returns the assessments dates sorted in date order.
+
+    public SortedSet<Date> sortedAssessmentDates(){
+
+        return new TreeSet<>(assessmentList.keySet());
+    }
+*/
 }

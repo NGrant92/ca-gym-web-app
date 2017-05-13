@@ -1,3 +1,4 @@
+#Member Details
 Assessment(a1):
   weight: 180
   chest: 66
@@ -39,9 +40,9 @@ Member(m1):
   gender: M
   height: 2.1
   weight: 200
-  todolist:
-  - a1
-  - a2
+  assessmentList:
+    - a1
+    - a2
 
 Member(m2):
   firstname: Marge
@@ -52,6 +53,6 @@ Member(m2):
   gender: F
   height: 2.5
   weight: 120
-  todolist:
-  - a3
-  - a4
+  assessmentList:
+    - a3
+    - a4

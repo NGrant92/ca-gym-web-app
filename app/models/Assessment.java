@@ -23,4 +23,56 @@ public class Assessment extends Model
     this.waist = waist;
     this.hips = hips;
   }
+
+    //-------
+    //GETTERS
+    //-------
+
+    /**
+     * Returns the member's weight in kg
+     * @return The member's weight in kg
+     */
+    public double getWeight() {
+        return weight;
+    }
+
+    /**
+     * Returns the member's chest in cm
+     * @return The member's chest in cm
+     */
+    public double getChest() {
+        return chest;
+    }
+
+    /**
+     * Returns the member's thigh legnth in cm
+     * @return The member's thigh legnth in cm
+     */
+    public double getThigh() {
+        return thigh;
+    }
+
+    /**
+     * Returns the member's upper arm legnth in cm
+     * @return The member's upper arm legnth in cm
+     */
+    public double getUpperArm() {
+        return upperArm;
+    }
+
+    /**
+     * Returns the member's waist measurements in cm
+     * @return The member's waist measurements in cm
+     */
+    public double getWaist() {
+        return waist;
+    }
+
+    /**
+     * Returns the member's hip measurements in cm
+     * @return The member's hip measurements in cm
+     */
+    public double getHips() {
+        return hips;
+    }
 }
