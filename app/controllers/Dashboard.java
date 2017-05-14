@@ -36,13 +36,33 @@ public class Dashboard extends Controller
     Member member = Accounts.getLoggedInMember();
     List<Assessment> assessmentList = member.assessmentList;
     double bmi = Analytics.calculateBMI(member, member.assessmentList.get(assessmentList.size() - 1));
-    render("dashboard.html", member, assessmentList, bmi);
+    String bmiCategory = Analytics.determineBMICategory(bmi);
+    String weightIndicator = weightIndicatorColour(bmiCategory);
+    render("dashboard.html", member, assessmentList, bmi, bmiCategory, weightIndicator);
   }
 
-  public double getBMI(){
-      Member member = Member.findById(ID);
-      return Analytics.calculateBMI(member, member.assessmentList.get(assessmentList.size() - 1));
+  public static String weightIndicatorColour(String bmiCategory){
+      String colour;
+
+      if(bmiCategory.contains("SEVERELY")){
+          colour = "red";
+      }
+      else if(!bmiCategory.equals("NORMAL")){
+          colour = "orange";
+      }
+      else{
+          colour = "green";
+      }
+
+      return colour;
   }
+
+  /**
+  public double getBMI(Long ID){
+      Member member = Member.findById(ID);
+      return Analytics.calculateBMI(member, member.assessmentList.get(member.assessmentList.size() - 1));
+  }
+   */
 
   public static void setAddress(String address)
   {
