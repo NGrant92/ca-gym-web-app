@@ -1,8 +1,10 @@
 package controllers;
 import models.*;
+import utils.*;
 import play.Logger;
 import play.mvc.Controller;
 import java.util.*;
+
 
 public class Dashboard extends Controller
 {
@@ -33,7 +35,13 @@ public class Dashboard extends Controller
     Logger.info("Rendering Dashboard");
     Member member = Accounts.getLoggedInMember();
     List<Assessment> assessmentList = member.assessmentList;
-    render("dashboard.html", member, assessmentList);
+    double bmi = Analytics.calculateBMI(member, member.assessmentList.get(assessmentList.size() - 1));
+    render("dashboard.html", member, assessmentList, bmi);
+  }
+
+  public double getBMI(){
+      Member member = Member.findById(ID);
+      return Analytics.calculateBMI(member, member.assessmentList.get(assessmentList.size() - 1));
   }
 
   public static void setAddress(String address)

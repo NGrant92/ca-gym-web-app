@@ -12,8 +12,8 @@ import java.util.SortedSet;
 import java.util.*;
 
 @Entity
-public class Member extends Model
-{
+public class Member extends Model {
+
     public String firstname;
     public String lastname;
     public String email;
@@ -47,6 +47,26 @@ public class Member extends Model
         return this.password.equals(password);
     }
 
+    //-------
+    //GETTERS
+    //-------
+
+    /**
+     * Returns the member's height in meters
+     * @return The member's height in meters
+     */
+    public double getHeight() {
+        return height;
+    }
+
+    /**
+     * Returns the member's weight in kg
+     * @return The member's weight in kg
+     */
+    public double getWeight() {
+        return weight;
+    }
+
     public void setAddress(String address){
         this.address = address;
     }
@@ -63,34 +83,5 @@ public class Member extends Model
         this.weight = weight;
     }
 
-    /**
-     * Adds a new assessment to the the member's Assessment HashMap
-     * @param newAssessment The assessment object to be added to the member's assessment HashMap
 
-    public void addAssessment(String date, Assessment newAssessment){
-
-        assessmentList = new HashMap<>();
-        assessmentList.put(date, newAssessment);
-
-    }
-
-    /**
-     * Returns the latest assessment based on last entry (by calendar date).
-     * @return Returns the latest assessment based on last entry (by calendar date).
-
-    public Assessment latestAssessment(){
-
-        return assessmentList.get(sortedAssessmentDates().last());
-
-    }
-
-    /**
-     * Returns the assessments dates sorted in date order.
-     * @return Returns the assessments dates sorted in date order.
-
-    public SortedSet<Date> sortedAssessmentDates(){
-
-        return new TreeSet<>(assessmentList.keySet());
-    }
-*/
 }
