@@ -7,6 +7,8 @@ GET     /                                       Start.index
 GET     /dashboard                              Dashboard.index
 GET     /admin                                  Admin.index
 GET     /about                                  About.index
+GET     /profile                                Profile.index
+POST    /profile/setFirstName                   Profile.setFirstName
 POST    /dashboard/addAssessment                Dashboard.addAssessment
 GET     /dashboard/{id}/deleteAssessment/{date} Dashboard.deleteAssessment
 

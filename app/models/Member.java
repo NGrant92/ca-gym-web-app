@@ -67,6 +67,22 @@ public class Member extends Model {
         return weight;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstname = firstname;
+    }
+
+    public void setLastName(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void setAddress(String address){
         this.address = address;
     }
