@@ -18,15 +18,34 @@ public class Dashboard extends Controller
     Logger.info("Adding Assessment " + weight + ", " + chest + ", " + thigh + ", " + upperArm + ", " + waist +  " and "  + hips);
     redirect("/dashboard");
   }
+  public static void deleteAssessment(Long ID, Long assessID) {
+      Member member = Member.findById(ID);
+      Assessment remAssess = Assessment.findById(assessID);
+      member.assessmentList.remove(remAssess);
+      member.save();
+      remAssess.delete();
+      Logger.info("Deleting Assessment");
+      redirect("/dashboard");
+  }
 
-  public static void deleteAssessment(Long ID, Long assessID)
+  public static void addTodo(String comment)
   {
-    Member member = Member.findById(ID);
-    Assessment remAssess = Assessment.findById(assessID);
-    member.assessmentList.remove(assessID);
+    Member member = Accounts.getLoggedInMember();
+    Todo newTodo = new Todo(comment);
+    member.todoList.add(newTodo);
     member.save();
-    remAssess.delete();
-    Logger.info("Deleting Assessment");
+    Logger.info("Adding Todo: " + comment);
+    redirect("/dashboard");
+  }
+
+  public static void deleteTodo(Long id, Long todoid)
+  {
+    Member member = Member.findById(id);
+    Todo remTodo = Todo.findById(todoid);
+    member.todoList.remove(remTodo);
+    member.save();
+    remTodo.delete();
+    Logger.info("Deleting Comment");
     redirect("/dashboard");
   }
 
@@ -34,11 +53,18 @@ public class Dashboard extends Controller
   {
     Logger.info("Rendering Dashboard");
     Member member = Accounts.getLoggedInMember();
+
     List<Assessment> assessmentList = member.assessmentList;
+
+    List<Todo> todoList = member.todoList;
+
     double bmi = Analytics.calculateBMI(member, member.assessmentList.get(assessmentList.size() - 1));
+
     String bmiCategory = Analytics.determineBMICategory(bmi);
+
     String weightIndicator = weightIndicatorColour(bmiCategory);
-    render("dashboard.html", member, assessmentList, bmi, bmiCategory, weightIndicator);
+
+    render("dashboard.html", member, assessmentList, todoList, bmi, bmiCategory, weightIndicator);
   }
 
   public static String weightIndicatorColour(String bmiCategory){

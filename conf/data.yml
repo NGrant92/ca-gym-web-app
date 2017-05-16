@@ -35,6 +35,24 @@ Assessment(a4):
   hips: 10
   comment: "Great"
 
+Todo(t1):
+  comment: "Get Duff"
+
+Todo(t2):
+  comment: "Get Buff"
+
+Todo(t3):
+  comment: "I'll go 5 lbs heavier next time"
+
+Todo(t4):
+  comment: "Make sure Homer doesn't get Duff"
+
+Todo(t5):
+  comment: "I need more focus on Cardio"
+
+Todo(t6):
+  comment: "5 more reps per set"
+
 Member(m1):
   firstname: Homer
   lastname: Simpson
@@ -47,6 +65,10 @@ Member(m1):
   assessmentList:
     - a1
     - a2
+  todoList:
+    - t1
+    - t2
+    - t3
 
 Member(m2):
   firstname: Marge
@@ -60,3 +82,7 @@ Member(m2):
   assessmentList:
     - a3
     - a4
+  todoList:
+    - t4
+    - t5
+    - t6

@@ -25,6 +25,9 @@ public class Member extends Model {
 
     @OneToMany(cascade = CascadeType.ALL)
     public List<Assessment> assessmentList = new ArrayList<Assessment>();
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Todo> todoList = new ArrayList<Todo>();
+
 
     public Member(String firstname, String lastname, String email, String password, String address, String gender, double height, double weight)
     {
@@ -68,7 +71,7 @@ public class Member extends Model {
     }
 
     public void setFirstName(String firstName) {
-        this.firstname = firstname;
+        this.firstname = firstName;
     }
 
     public void setLastName(String lastname) {
@@ -87,7 +90,7 @@ public class Member extends Model {
         this.address = address;
     }
 
-    public void setGender(String address){
+    public void setGender(String gender){
         this.gender = gender;
     }
 

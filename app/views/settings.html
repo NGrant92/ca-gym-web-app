@@ -1,0 +1,118 @@
+#{extends 'main.html' /}
+#{set title:'Settings' /}
+
+#{menu id:"settings"/}
+<div class="ui equal width padded grid">
+  <div class = "four wide column">
+    <div class="ui card ">
+      <div class="image">
+        <img src="public/images/arnold-flex.png">
+      </div>
+      <div class="content">
+        <a class="header">${member.firstname} ${member.lastname}</a>
+        <div class="meta">
+          <span class="date">Joined in 2017</span>
+        </div>
+
+        <table class="ui celled table">
+          <thead>
+            <tr>
+              <th>Details</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td >Email:</td>
+              <td>${member.email}</td>
+            </tr>
+            <tr>
+              <td>Address:</td>
+              <td>${member.address}</td>
+            </tr>
+            <tr>
+              <td>Gender:</td>
+              <td>${member.gender}</td>
+            </tr>
+            <tr>
+              <td>Height:</td>
+              <td>${member.height}</td>
+            </tr>
+            <tr>
+              <td>Weight:</td>
+              <td>${assessmentList.last().weight}</td>
+            </tr>
+          </tbody></table>
+        </div>
+    </div>
+  </div>
+
+  <div class = "twelve wide align right column padded">
+  <section class="ui raised segment">
+
+    <div class="ui two column">
+        <h3 class="ui dividing header">Update Profile</h3>
+
+        <form class="ui stacked segment form" action="/settings/setName" method="POST">
+          <div class="field">
+            <label>Name</label>
+            <div class="two fields">
+              <div class="field">
+                <input placeholder="First Name" type="text" name="firstName" value = "${member.firstname}">
+              </div>
+              <div class="field">
+                <input placeholder="First Name" type="text" name="lastName" value = "${member.lastname}">
+              </div>
+            </div>
+          </div>
+          <button class="ui blue submit button">Update</button>
+        </form>
+
+      <form class="ui stacked segment form" action="/settings/setEmail" method="POST">
+        <div class="field">
+          <label>Email</label>
+          <input placeholder="Email" type="text" name="email" value = "${member.email}">
+        </div>
+        <button class="ui blue submit button">Update</button>
+      </form>
+
+      <form class="ui stacked segment form" action="/settings/setAddress" method="POST">
+        <div class="field">
+          <label>Address</label>
+          <input placeholder="Address" type="text" name="address" value = "${member.address}">
+        </div>
+        <button class="ui blue submit button">Update</button>
+      </form>
+
+      <form class="ui stacked segment form" action="/settings/setGender" method="POST">
+        <label>Gender</label>
+          <select class="ui dropdown" name = "gender">
+          <option value="${member.gender}" hidden>${member.gender}</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <br>
+        <button class="ui blue submit button">Update</button>
+      </form>
+
+      <form class="ui stacked segment form" action="/settings/setHeight" method="POST">
+        <div class="field">
+          <label>Height</label>
+          <input placeholder="Height" type="text" name="height" value = "${member.height}">
+        </div>
+        <button class="ui blue submit button">Update</button>
+      </form>
+
+      <form class="ui stacked segment form" action="/settings/setWeight" method="POST">
+        <div class="field">
+          <label>Starting Weight</label>
+          <input placeholder="Starting Weight" type="text" name="weight" value = "${member.weight}">
+        </div>
+        <button class="ui blue submit button">Update</button>
+      </form>
+
+      </form>
+    </div>
+  </section>
+  </div>
+</div>
