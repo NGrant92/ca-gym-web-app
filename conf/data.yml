@@ -59,7 +59,7 @@ Member(m1):
   email: homer@simpson.com
   password: secret
   address: Springfield
-  gender: M
+  gender: Male
   height: 2.1
   weight: 200
   assessmentList:
@@ -76,7 +76,7 @@ Member(m2):
   email: marge@simpson.com
   password: secret
   address: Springfield
-  gender: F
+  gender: Female
   height: 2.5
   weight: 120
   assessmentList:
@@ -86,3 +86,14 @@ Member(m2):
     - t4
     - t5
     - t6
+
+Trainer(tr1):
+  firstname: Arnold
+  lastname: Shwarz
+  email: t1000@tmail.com
+  password: secret
+  address: The Future
+  gender: Male
+  membersList:
+    - m1
+    - m2
