@@ -89,7 +89,7 @@ Member(m2):
 
 Trainer(tr1):
   firstname: Arnold
-  lastname: Shwarz
+  lastname: Shwartz
   email: t1000@tmail.com
   password: secret
   address: The Future

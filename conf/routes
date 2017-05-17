@@ -5,15 +5,17 @@
 # Home page
 GET     /                                       Start.index
 GET     /dashboard                              Dashboard.index
-GET     /admin                                  Admin.index
+GET     /trainerboard                           TrainerBoard.index
 GET     /about                                  About.index
+
 GET     /settings                               Settings.index
-POST    /settings/setFirstName                  Profile.setName
-POST    /settings/setEmail                      Profile.setEmail
-POST    /settings/setAddress                    Profile.setAddress
-POST    /settings/setGender                     Profile.setGender
-POST    /settings/setHeight                     Profile.setHeight
-POST    /settings/setWeight                     Profile.setWeight
+POST    /settings/setFirstName                  Settings.setName
+POST    /settings/setEmail                      Settings.setEmail
+POST    /settings/setAddress                    Settings.setAddress
+POST    /settings/setGender                     Settings.setGender
+POST    /settings/setHeight                     Settings.setHeight
+POST    /settings/setWeight                     Settings.setWeight
+
 POST    /dashboard/addAssessment                Dashboard.addAssessment
 POST    /dashboard/addTodo                      Dashboard.addTodo
 GET     /dashboard/{id}/deleteAssessment        Dashboard.deleteAssessment

@@ -4,15 +4,15 @@ import play.Logger;
 import play.mvc.Controller;
 import java.util.*;
 
-public class Admin extends Controller
+public class TrainerBoard extends Controller
 {
     public static void index() {
-        Logger.info("Rendering Dashboard");
+        Logger.info("Rendering Admin");
 
         Trainer trainer = Accounts.getLoggedInTrainer();
 
         List<Member> membersList = trainer.membersList;
 
-        render("admin.html", trainer, membersList);
+        render("trainerboard.html", trainer, membersList);
     }
 }

@@ -9,8 +9,8 @@ import java.util.*;
 public class Dashboard extends Controller
 {
 
-    public static void addAssessment(double weight, double chest, double thigh, double upperArm, double waist, double hips)
-    {
+    public static void addAssessment(double weight, double chest, double thigh, double upperArm, double waist, double hips) {
+
         Member member = Accounts.getLoggedInMember();
         Assessment newAssessment = new Assessment(weight, chest, thigh, upperArm, waist, hips, "");
         member.assessmentList.add(newAssessment);
@@ -18,7 +18,9 @@ public class Dashboard extends Controller
         Logger.info("Adding Assessment " + weight + ", " + chest + ", " + thigh + ", " + upperArm + ", " + waist +  " and "  + hips);
         redirect("/dashboard");
     }
+
     public static void deleteAssessment(Long ID, Long assessID) {
+
         Member member = Member.findById(ID);
         Assessment remAssess = Assessment.findById(assessID);
         member.assessmentList.remove(remAssess);
@@ -28,8 +30,8 @@ public class Dashboard extends Controller
         redirect("/dashboard");
     }
 
-    public static void addTodo(String comment)
-    {
+    public static void addTodo(String comment) {
+
         Member member = Accounts.getLoggedInMember();
         Todo newTodo = new Todo(comment);
         member.todoList.add(newTodo);
@@ -38,8 +40,8 @@ public class Dashboard extends Controller
         redirect("/dashboard");
     }
 
-    public static void deleteTodo(Long id, Long todoid)
-    {
+    public static void deleteTodo(Long id, Long todoid) {
+
         Member member = Member.findById(id);
         Todo remTodo = Todo.findById(todoid);
         member.todoList.remove(remTodo);
@@ -49,8 +51,8 @@ public class Dashboard extends Controller
         redirect("/dashboard");
     }
 
-    public static void index()
-    {
+    public static void index() {
+
         Logger.info("Rendering Dashboard");
         Member member = Accounts.getLoggedInMember();
 
@@ -68,6 +70,7 @@ public class Dashboard extends Controller
     }
 
     public static String weightIndicatorColour(String bmiCategory){
+
         String colour;
 
         if(bmiCategory.contains("SEVERELY")){
@@ -90,8 +93,8 @@ public class Dashboard extends Controller
      }
      */
 
-    public static void setAddress(String address)
-    {
+    public static void setAddress(String address) {
+
         Member member = Accounts.getLoggedInMember();
         member.setAddress(address);
         member.save();
@@ -99,8 +102,8 @@ public class Dashboard extends Controller
         redirect("/dashboard");
     }
 
-    public static void setGender(String gender)
-    {
+    public static void setGender(String gender) {
+
         Member member = Accounts.getLoggedInMember();
         member.setGender(gender);
         member.save();
@@ -108,8 +111,8 @@ public class Dashboard extends Controller
         redirect("/dashboard");
     }
 
-    public static void setHeight(double height)
-    {
+    public static void setHeight(double height) {
+
         Member member = Accounts.getLoggedInMember();
         member.setHeight(height);
         member.save();
@@ -117,8 +120,8 @@ public class Dashboard extends Controller
         redirect("/dashboard");
     }
 
-    public static void setWeight(double weight)
-    {
+    public static void setWeight(double weight) {
+
         Member member = Accounts.getLoggedInMember();
         member.setWeight(weight);
         member.save();

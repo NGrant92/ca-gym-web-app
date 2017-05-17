@@ -26,6 +26,15 @@ public class Settings extends Controller
         redirect("/settings");
     }
 
+    public static void setEmail(String email){
+
+        Member member = Accounts.getLoggedInMember();
+        member.setEmail(email);
+        member.save();
+        Logger.info("Updating First Name: " + email);
+        redirect("/settings");
+    }
+
     public static void setAddress(String address) {
         Member member = Accounts.getLoggedInMember();
         member.setAddress(address);
