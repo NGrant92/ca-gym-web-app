@@ -20,15 +20,12 @@ public class Trainer extends Model {
     public String password;
     public String address;
     public String gender;
-    public double height;
-    public double weight;
 
     @OneToMany(cascade = CascadeType.ALL)
-    public List<Member> memberList = new ArrayList<Member>();
+    public List<Member> membersList = new ArrayList<Member>();
 
 
-    public Member(String firstname, String lastname, String email, String password, String address, String gender, double height, double weight)
-    {
+    public Trainer(String firstname, String lastname, String email, String password, String address, String gender) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;

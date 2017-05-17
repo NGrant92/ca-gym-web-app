@@ -5,7 +5,7 @@
 
 <section class="ui raised segment">
   <header class="ui header">
-    Todo List
+    Member List
   </header>
   <table class = "ui fixed table">
     <thead>
@@ -16,10 +16,10 @@
     </thead>
     <tbody>
     <div class="ui bulleted list">
-      #{list items:todolist, as:'todo'}
+      #{list items:membersList, as:'members'}
       <tr>
-        <td>${todo.id}</td>
-        <td>${todo.title}</td>
+        <td>${members.firstname} ${members.lastname}</td>
+        <td></td>
       </tr>
       #{/list}
     </div>
@@ -27,11 +27,4 @@
     </tbody>
   </table>
 </section>
-
-<form class="ui stacked segment form" action="/dashboard/addtodo" method="POST">
-  <div class="field">
-    <label>Title</label>
-    <input placeholder="Title" type="text" name="title">
-  </div>
-  <button class="ui blue submit button">Add Todo</button>
 </form>
