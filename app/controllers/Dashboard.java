@@ -60,13 +60,9 @@ public class Dashboard extends Controller
 
         List<Todo> todoList = member.todoList;
 
-        double bmi = Analytics.calculateBMI(member, member.assessmentList.get(assessmentList.size() - 1));
+        String weightIndicator = weightIndicatorColour(member.getBMICategory());
 
-        String bmiCategory = Analytics.determineBMICategory(bmi);
-
-        String weightIndicator = weightIndicatorColour(bmiCategory);
-
-        render("dashboard.html", member, assessmentList, todoList, bmi, bmiCategory, weightIndicator);
+        render("dashboard.html", member, assessmentList, todoList, weightIndicator);
     }
 
     public static String weightIndicatorColour(String bmiCategory){
@@ -84,48 +80,5 @@ public class Dashboard extends Controller
         }
 
         return colour;
-    }
-
-    /**
-     public double getBMI(Long ID){
-     Member member = Member.findById(ID);
-     return Analytics.calculateBMI(member, member.assessmentList.get(member.assessmentList.size() - 1));
-     }
-     */
-
-    public static void setAddress(String address) {
-
-        Member member = Accounts.getLoggedInMember();
-        member.setAddress(address);
-        member.save();
-        Logger.info("Adding address: " + address);
-        redirect("/dashboard");
-    }
-
-    public static void setGender(String gender) {
-
-        Member member = Accounts.getLoggedInMember();
-        member.setGender(gender);
-        member.save();
-        Logger.info("Adding gender: " + gender);
-        redirect("/dashboard");
-    }
-
-    public static void setHeight(double height) {
-
-        Member member = Accounts.getLoggedInMember();
-        member.setHeight(height);
-        member.save();
-        Logger.info("Adding height: " + height);
-        redirect("/dashboard");
-    }
-
-    public static void setWeight(double weight) {
-
-        Member member = Accounts.getLoggedInMember();
-        member.setWeight(weight);
-        member.save();
-        Logger.info("Adding weight: " + weight);
-        redirect("/dashboard");
     }
 }

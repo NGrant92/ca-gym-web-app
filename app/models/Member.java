@@ -1,4 +1,5 @@
 package models;
+import utils.*;
 
 import play.db.jpa.Model;
 
@@ -49,9 +50,20 @@ public class Member extends Model {
         return this.password.equals(password);
     }
 
-    //-------
-    //GETTERS
-    //-------
+    public double getBMI(){
+        double lastWeight;
+        if(assessmentList.size() > 0){
+            lastWeight = assessmentList.get(assessmentList.size() - 1).weight;
+        }
+        else{
+            lastWeight = weight;
+        }
+        return Analytics.calculateBMI(height, lastWeight);
+    }
+
+    public String getBMICategory(){
+        return Analytics.determineBMICategory(getBMI());
+    }
 
     /**
      * Returns the member's height in meters

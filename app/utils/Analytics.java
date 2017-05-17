@@ -14,8 +14,8 @@ public class Analytics{
      *
      * @return the BMI value for the member. The number returned is truncated to two decimal places.
      */
-    public static double calculateBMI(Member member, Assessment assessment) {
-        return toTwoDecimalPlaces((assessment.getWeight()) / (member.getHeight() * member.getHeight()));
+    public static double calculateBMI(double height, double weight) {
+        return toTwoDecimalPlaces(weight / (height * height));
     }
 
     /**
@@ -68,11 +68,67 @@ public class Analytics{
     }
 
     /**
+     * This method returns a boolean to indicate if the member has an ideal body weight based on the
+     * Devine formula.
+     * men: kg = 50 + 2.3kg per inch over 5ft
+     * women: kg = 45.5 + 2.3kg per inch over 5ft
+     *
+     * @return Is the person at their ideal body weight
+     */
+    public static boolean isIdealBodyWeight(Member member){
+        //60 inches = 5ft
+        double heightInches = convertHeightMetresToInches(member.getHeight());
+        double idealWeight = 0.0;
+        Assessment lastAssessment = member.assessmentList.get(member.assessmentList.size() - 1);
+        if(heightInches <= 60){
+            if(member.gender.equals("Male")){
+                idealWeight = 50.0;
+            }
+            else{
+                idealWeight = 45.5;
+            }
+        }
+        else if(member.gender.equals("Male")){
+            idealWeight = 50 + (2.3 * (heightInches - 60));
+        }
+        else if (member.gender.equals("Female")){
+            idealWeight = 45.5 + (2.3 * (heightInches - 60));
+        }
+
+        if(idealWeight >= (lastAssessment.getWeight() - 2) && idealWeight <= (lastAssessment.getWeight()+2)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
      * A method to truncate any double to two decimal places
      *
      * @return end result is a double with only 2 decimal places
      */
     private static double toTwoDecimalPlaces(double num) {
         return(int)(num*100)/100.0;
+    }
+
+    /**
+     * This method returns the member height converted from KGs to pounds.
+     *
+     * @return member weight converted from KGs to pounds. Number returned is truncated to 2 decimal places.
+     */
+    public static double convertWeightKGtoPounds(double weight){
+        double weightPounds = weight * 2.2;
+        return toTwoDecimalPlaces(weightPounds);
+    }
+
+    /**
+     * This method returns the member height converted from metres to inches.
+     *
+     * @return member height converted from meters to inches using the formula: metres x 39.37.
+     *          The number returned is truncated to 2 decimal places.
+     */
+    public static double convertHeightMetresToInches(double height){
+        return toTwoDecimalPlaces(height * 39.37);
     }
 }

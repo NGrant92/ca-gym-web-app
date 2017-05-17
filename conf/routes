@@ -6,6 +6,7 @@
 GET     /                                       Start.index
 GET     /dashboard                              Dashboard.index
 GET     /trainerboard                           TrainerBoard.index
+GET     /trainerassess/{memberid}               TrainerAssess.index
 GET     /about                                  About.index
 
 GET     /settings                               Settings.index

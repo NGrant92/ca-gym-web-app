@@ -1,13 +1,13 @@
 #{extends 'main.html' /}
 #{set title:'Dashboard' /}
 
-#{menu id:"dashboard"/}
+#{trainermenu id:"trainerboard"/}
 <div class="ui equal width padded grid">
   <div class = "four wide column">
     <div class="ui card ">
 
       <div class="image">
-        <img src="public/images/arnold-flex.png">
+        <img src="/public/images/arnold-flex.png">
       </div>
       <div class="content">
         <a class="header">${member.firstname} ${member.lastname}</a>
@@ -63,7 +63,7 @@
           </div>
           <div class="statistic">
             <div class="value">
-              <i class="heartbeat icon"></i>${member.getBMI()}
+              <i class="heartbeat icon"></i>${bmi}
             </div>
             <div class="label">
               BMI
@@ -74,13 +74,13 @@
               <i class="doctor icon"></i>
             </div>
             <div class="label">
-              ${member.getBMICategory()}
+              ${bmiCategory}
             </div>
           </div>
         </div>
       </form>
 
-      <table class = "ui celled table middle aligned segment">
+      <table class = "ui table middle aligned segment">
         <thead>
         <tr>
           <th>Weight</th>
@@ -102,76 +102,18 @@
             <td>${assessments.waist}</td>
             <td>${assessments.hips}</td>
             <td>${assessments.comment}</td>
+            <form class="ui stacked segment form" action="/dashboard/addTodo" method="POST">
+              <div class="field">
+                <label>Add Comment</label>
+                <input placeholder="Comment" type="text" name="comment">
+              </div>
+              <button class="ui blue submit button">Add Comment</button>
           </tr>
+
+          </form>
           #{/list}
         </tbody>
       </table>
-      <div class="ui two column">
-        <form class="ui stacked segment form" action="/dashboard/addAssessment" method="POST">
-          <h3 class="ui header">Add Assessment</h3>
-          <div class="three fields">
-            <div class="field">
-              <label>&nbsp; &nbsp; &nbsp; Weight</label>
-              <input placeholder="Weight" type="text" name="weight">
-            </div>
-            <div class="field">
-              <label>&nbsp; &nbsp; &nbsp; Chest</label>
-              <input placeholder="Chest" type="text" name="chest">
-            </div>
-            <div class="field">
-              <label>&nbsp; &nbsp; &nbsp; Thigh</label>
-              <input placeholder="Thigh" type="text" name="thigh">
-            </div>
-          </div>
-          <div class="three fields">
-            <div class="field">
-              <label>&nbsp; &nbsp; &nbsp; Upper Arm</label>
-              <input placeholder="Upper Arm" type="text" name="upperArm">
-            </div>
-            <div class="field">
-              <label>&nbsp; &nbsp; &nbsp; Waist</label>
-              <input placeholder="Waist" type="text" name="waist">
-            </div>
-            <div class="field">
-              <label>&nbsp; &nbsp; &nbsp; Hips</label>
-              <input placeholder="Hips" type="text" name="hips">
-            </div>
-          </div>
-          <button class="ui blue submit button">Submit</button>
-        </form>
-      </div>
-      <section class="ui raised segment">
-        <header class="ui header">
-          Workout Notes
-        </header>
-        </header>
-        <table class = "ui fixed table">
-          <thead>
-          <tr>
-            <th>To Do</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <div class="ui bulleted list">
-            #{list items:todoList, as:'todo'}
-            <tr>
-              <td>${todo.comment}</td>
-              <td> <a href="/dashboard/${member.id}/deleteTodo/${todo.id} " class="ui tiny red button "> Delete </a> </td>
-            </tr>
-            #{/list}
-          </div>
-          </tbody>
-        </table>
-      </section>
-
-      <form class="ui stacked segment form" action="/dashboard/addTodo" method="POST">
-        <div class="field">
-          <label>Add Comment</label>
-          <input placeholder="Comment" type="text" name="comment">
-        </div>
-        <button class="ui blue submit button">Add Comment</button>
-      </form>
     </section>
   </div>
 </div>
