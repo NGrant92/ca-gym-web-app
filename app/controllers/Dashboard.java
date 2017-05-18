@@ -58,6 +58,8 @@ public class Dashboard extends Controller
 
         List<Assessment> assessmentList = member.assessmentList;
 
+        Collections.reverse(assessmentList);
+
         List<Todo> todoList = member.todoList;
 
         render("dashboard.html", member, assessmentList, todoList);

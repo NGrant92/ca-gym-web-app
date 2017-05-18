@@ -88,6 +88,7 @@ public class Member extends Model {
     public String getTrend(long assessmentid){
 
         List<Assessment> memberAssessments = new ArrayList<Assessment>(assessmentList);
+        Collections.reverse(memberAssessments);
 
         Assessment currAssessment = memberAssessments.get(memberAssessments.indexOf(Assessment.findById(assessmentid)));
 
@@ -98,11 +99,11 @@ public class Member extends Model {
         double currWeightDiff;
         double prevWeightDiff;
 
-        if(assessmentid == 1){
+        if(memberAssessments.indexOf(currAssessment) == memberAssessments.size() - 1){
             prevWeight = weight;
         }
         else{
-            prevWeight = memberAssessments.get(memberAssessments.indexOf(currAssessment) - 1).getWeight();
+            prevWeight = memberAssessments.get(memberAssessments.indexOf(currAssessment) + 1).getWeight();
         }
 
         currWeightDiff = Math.abs(currWeight - idealWeight);

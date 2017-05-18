@@ -32,6 +32,7 @@ public class TrainerAssess extends Controller
         Member member = Member.findById(memberid);
 
         List<Assessment> assessmentList = member.assessmentList;
+        Collections.reverse(assessmentList);
 
         render("trainerassess.html", trainer, member, assessmentList);
     }

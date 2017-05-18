@@ -87,7 +87,7 @@
           <div class="content">
             <div class="ui horizontal divider">
               <i class="bar chart icon"></i>
-              Assessment #${assessments.id}
+              Assessment #${assessmentList.indexOf(assessments) + 1}
             </div>
             <table class = "ui celled table middle aligned segment">
               <thead>
@@ -98,6 +98,7 @@
                 <th>Upper Arm</th>
                 <th>Waist</th>
                 <th>Hips</th>
+                <th>Trend</th>
                 <th>Comments</th>
               </tr>
               </thead>
@@ -109,6 +110,7 @@
                 <td>${assessments.upperArm}</td>
                 <td>${assessments.waist}</td>
                 <td>${assessments.hips}</td>
+                <td><i class="large ${member.getTrend(assessments.id)} icon"></i></td>
                 <td>${assessments.comment}</td>
               </tr>
               </tbody>
