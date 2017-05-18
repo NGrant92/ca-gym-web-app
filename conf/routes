@@ -3,42 +3,42 @@
 # ~~~~
 
 # Home page
-GET     /                                           Start.index
-GET     /dashboard                                  Dashboard.index
-GET     /trainerboard                               TrainerBoard.index
-GET     /trainerassess/{memberid}                   TrainerAssess.index
-GET     /about                                      About.index
+GET     /                                                   Start.index
+GET     /dashboard                                          Dashboard.index
+GET     /trainerboard                                       TrainerBoard.index
+GET     /trainerassess/{memberid}                           TrainerAssess.index
+GET     /about                                              About.index
 
-POST    /dashboard/addAssessment                    Dashboard.addAssessment
-POST    /dashboard/addTodo                          Dashboard.addTodo
-GET     /dashboard/{id}/deleteAssessment/{assessmentid}            Dashboard.deleteAssessment
-GET     /dashboard/{id}/deleteTodo/         Dashboard.deleteTodo
+POST    /dashboard/addAssessment                            Dashboard.addAssessment
+POST    /dashboard/addTodo                                  Dashboard.addTodo
+GET     /dashboard/{id}/deleteAssessment/{assessmentid}     Dashboard.deleteAssessment
+GET     /dashboard/{id}/deleteTodo/                         Dashboard.deleteTodo
 
-POST    /trainerassess/setComment/{memberid}/{assessid}   TrainerAssess.setComment
+POST    /trainerassess/setComment/{memberid}/{assessid}     TrainerAssess.setComment
 
-GET     /settings                                   Settings.index
-POST    /settings/setFirstName                      Settings.setName
-POST    /settings/setEmail                          Settings.setEmail
-POST    /settings/setAddress                        Settings.setAddress
-POST    /settings/setGender                         Settings.setGender
-POST    /settings/setHeight                         Settings.setHeight
-POST    /settings/setWeight                         Settings.setWeight
+GET     /settings                                           Settings.index
+POST    /settings/setFirstName                              Settings.setName
+POST    /settings/setEmail                                  Settings.setEmail
+POST    /settings/setAddress                                Settings.setAddress
+POST    /settings/setGender                                 Settings.setGender
+POST    /settings/setHeight                                 Settings.setHeight
+POST    /settings/setWeight                                 Settings.setWeight
 
 
 
-GET    /signup                                      Accounts.signup
-GET    /login                                       Accounts.login
-GET    /logout                                      Accounts.logout
+GET    /signup                                              Accounts.signup
+GET    /login                                               Accounts.login
+GET    /logout                                              Accounts.logout
 
-POST   /register                                    Accounts.register
-POST   /authenticate                                Accounts.authenticate
+POST   /register                                            Accounts.register
+POST   /authenticate                                        Accounts.authenticate
 
 
 # Ignore favicon requests
-GET     /favicon.ico                                404
+GET     /favicon.ico                                        404
 
 # Map static resources from the /app/public folder to the /public path
-GET     /public/                                    staticDir:public
+GET     /public/                                            staticDir:public
 
 # Catch all
-*       /{controller}/{action}                      {controller}.{action}
+*       /{controller}/{action}                              {controller}.{action}

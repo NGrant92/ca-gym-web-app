@@ -12,7 +12,7 @@ public class Dashboard extends Controller
     public static void addAssessment(double weight, double chest, double thigh, double upperArm, double waist, double hips) {
 
         Member member = Accounts.getLoggedInMember();
-        Assessment newAssessment = new Assessment(weight, chest, thigh, upperArm, waist, hips, "");
+        Assessment newAssessment = new Assessment(weight, chest, thigh, upperArm, waist, hips);
         member.assessmentList.add(newAssessment);
         member.save();
         Logger.info("Adding Assessment " + weight + ", " + chest + ", " + thigh + ", " + upperArm + ", " + waist +  " and "  + hips);

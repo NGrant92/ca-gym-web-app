@@ -20,7 +20,9 @@ public class Accounts extends Controller {
 
     public static void register(String firstname, String lastname, String email, String password,  String address, String gender, double height, double weight) {
         Logger.info("Registering new user " + email);
+        Assessment assessment = new Assessment(weight, 0, 0, 0, 0, 0);
         Member member = new Member(firstname, lastname, email, password, address, gender, height, weight);
+        member.assessmentList.add(assessment);
         member.save();
         redirect("/");
     }

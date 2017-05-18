@@ -87,7 +87,9 @@ public class Member extends Model {
 
     public String getTrend(long assessmentid){
 
-        Assessment currAssessment = Assessment.findById(assessmentid);
+        List<Assessment> memberAssessments = new ArrayList<Assessment>(assessmentList);
+
+        Assessment currAssessment = memberAssessments.get(memberAssessments.indexOf(Assessment.findById(assessmentid)));
 
         double idealWeight = Analytics.isIdealBodyWeight(height, latestWeight(), gender);
         double currWeight = currAssessment.getWeight();
@@ -100,8 +102,7 @@ public class Member extends Model {
             prevWeight = weight;
         }
         else{
-            Assessment prevAssessment = Assessment.findById(assessmentid - 1);
-            prevWeight = prevAssessment.getWeight();
+            prevWeight = memberAssessments.get(memberAssessments.indexOf(currAssessment) - 1).getWeight();
         }
 
         currWeightDiff = Math.abs(currWeight - idealWeight);
@@ -116,6 +117,14 @@ public class Member extends Model {
         else{
             return "meh";
         }
+    }
+
+    public Assessment latestAssessment(){
+        if(assessmentList.size() > 1){
+            return assessmentList.get(assessmentList.size() - 1);
+        }
+        else
+            return assessmentList.get(0);
     }
 
     /**
