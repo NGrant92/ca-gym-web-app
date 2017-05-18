@@ -49,6 +49,7 @@ public class Assessment extends Model {
         else{
             newDate = "null";
         }
+
         return newDate;
     }
 
