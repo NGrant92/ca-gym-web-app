@@ -108,14 +108,14 @@ public class Member extends Model {
         currWeightDiff = Math.abs(currWeight - idealWeight);
         prevWeightDiff = Math.abs(prevWeight - idealWeight);
 
-        if(currWeightDiff < prevWeightDiff){
-            return "smile";
+        if(currWeightDiff < prevWeightDiff || currWeight == idealWeight){
+            return "green smile";
         }
         else if(prevWeightDiff < currWeightDiff){
-            return "frown";
+            return "red frown";
         }
         else{
-            return "meh";
+            return "blue meh";
         }
     }
 

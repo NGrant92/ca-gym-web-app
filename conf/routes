@@ -12,9 +12,10 @@ GET     /about                                              About.index
 POST    /dashboard/addAssessment                            Dashboard.addAssessment
 POST    /dashboard/addTodo                                  Dashboard.addTodo
 GET     /dashboard/{id}/deleteAssessment/{assessmentid}     Dashboard.deleteAssessment
-GET     /dashboard/{id}/deleteTodo/                         Dashboard.deleteTodo
+GET     /dashboard/{id}/deleteTodo/{todoid}                 Dashboard.deleteTodo
 
 POST    /trainerassess/setComment/{memberid}/{assessid}     TrainerAssess.setComment
+GET     /trainerboard/deleteMember/{memberid}               TrainerBoard.deleteMember
 
 GET     /settings                                           Settings.index
 POST    /settings/setFirstName                              Settings.setName
