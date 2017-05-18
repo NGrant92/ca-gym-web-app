@@ -12,10 +12,11 @@
         <div class="item">
           <i class="large ${members.gender.toLowerCase()} middle aligned icon"></i>
           <div class="content">
-            <a class="header" href="/trainerassess/${members.id}">${members.firstname} ${members.lastname} </a>
+            <a href="/trainerassess/${members.id}">${members.firstname} ${members.lastname} </a>
+            <a href="/trainerboard/deleteMember/${members.id}" class="ui mini red icon button"><i class = "trash outline icon"></i></a>
             <div class="description">${members.assessmentList.size()} assessments</div>
-            <a href="/trainerboard/deleteMember/${members.id}" class="ui tiny red icon button"><i class = "trash outline icon"></i></a>
           </div>
+
         </div>
       #{/list}
     </div>

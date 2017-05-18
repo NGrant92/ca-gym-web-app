@@ -6,6 +6,7 @@ Assessment(a1):
   upperArm: 44
   waist: 99
   hips: 55
+  date: 2017-05-11 22:58:37.244
   comment: "So far so good"
 
 Assessment(a2):
@@ -15,6 +16,7 @@ Assessment(a2):
   upperArm: 40
   waist: 90
   hips: 50
+  date: 2017-05-18 22:58:37.244
   comment: "Better"
 
 Assessment(a3):
@@ -24,6 +26,7 @@ Assessment(a3):
   upperArm: 33
   waist: 22
   hips: 11
+  date: 2017-05-11 22:58:37.244
   comment: "Good"
 
 Assessment(a4):
@@ -33,6 +36,7 @@ Assessment(a4):
   upperArm: 30
   waist: 20
   hips: 10
+  date: 2017-05-18 22:58:37.244
   comment: "Great"
 
 Todo(t1):

@@ -2,6 +2,9 @@ package models;
 
 import play.db.jpa.Model;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 import javax.persistence.Entity;
 
 @Entity
@@ -13,6 +16,7 @@ public class Assessment extends Model {
     public double waist;
     public double hips;
     public String comment;
+    public Date date;
 
     public Assessment(double weight, double chest, double thigh, double upperArm, double waist, double hips) {
         this.weight = weight;
@@ -22,11 +26,31 @@ public class Assessment extends Model {
         this.waist = waist;
         this.hips = hips;
         this.comment = "";
+        this.date = new Date();
     }
 
     //-------
     //GETTERS
     //-------
+
+    /**
+     * Returns the member's weight in kg
+     * @return The member's weight in kg
+     */
+    public String getDate() {
+
+        String newDate;
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+        if(date != null){
+            newDate = dateFormat.format(date);
+        }
+        else{
+            newDate = "null";
+        }
+        return newDate;
+    }
 
     /**
      * Returns the member's weight in kg
