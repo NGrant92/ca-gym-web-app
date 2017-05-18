@@ -75,7 +75,7 @@ public class Analytics{
      *
      * @return Is the person at their ideal body weight
      */
-    public static boolean isIdealBodyWeight(Member member){
+    public static String isIdealBodyWeight(Member member){
         //60 inches = 5ft
         double heightInches = convertHeightMetresToInches(member.getHeight());
         double idealWeight = 0.0;
@@ -95,11 +95,14 @@ public class Analytics{
             idealWeight = 45.5 + (2.3 * (heightInches - 60));
         }
 
-        if(idealWeight >= (lastAssessment.getWeight() - 2) && idealWeight <= (lastAssessment.getWeight()+2)){
-            return true;
+        if(idealWeight >= (lastAssessment.getWeight() - 2) && idealWeight <= (lastAssessment.getWeight() + 2)){
+            return "green";
+        }
+        else if(idealWeight >= (lastAssessment.getWeight() - 5) && idealWeight <= (lastAssessment.getWeight() + 5)){
+            return "orange";
         }
         else{
-            return false;
+            return "red";
         }
     }
 

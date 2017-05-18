@@ -65,6 +65,24 @@ public class Member extends Model {
         return Analytics.determineBMICategory(getBMI());
     }
 
+    public String weightIndicatorColour(){
+
+        String bmiCategory = getBMICategory();
+        String colour;
+
+        if(bmiCategory.contains("SEVERELY")){
+            colour = "red";
+        }
+        else if(!bmiCategory.equals("NORMAL")){
+            colour = "orange";
+        }
+        else{
+            colour = "green";
+        }
+
+        return colour;
+    }
+
     /**
      * Returns the member's height in meters
      * @return The member's height in meters

@@ -60,25 +60,8 @@ public class Dashboard extends Controller
 
         List<Todo> todoList = member.todoList;
 
-        String weightIndicator = weightIndicatorColour(member.getBMICategory());
+        String weightIndicator = Analytics.isIdealBodyWeight(member);
 
         render("dashboard.html", member, assessmentList, todoList, weightIndicator);
-    }
-
-    public static String weightIndicatorColour(String bmiCategory){
-
-        String colour;
-
-        if(bmiCategory.contains("SEVERELY")){
-            colour = "red";
-        }
-        else if(!bmiCategory.equals("NORMAL")){
-            colour = "orange";
-        }
-        else{
-            colour = "green";
-        }
-
-        return colour;
     }
 }

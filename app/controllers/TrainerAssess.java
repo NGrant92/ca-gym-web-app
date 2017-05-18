@@ -20,6 +20,18 @@ public class TrainerAssess extends Controller
         redirect("/trainerassess");
     }
 
+    /**
+    public static void setComment(Long ID, Long assessID, String comment) {
+
+        Member member = Member.findById(ID);
+        Assessment assessment = Assessment.findById(assessID);
+        member.assessmentList.findById(assessID).setComment(comment);
+        member.save();
+        Logger.info("Adding Comment to Assessment: " + comment);
+        redirect("/trainerassess");
+    }
+     */
+
     public static void index(Long memberid) {
 
         Logger.info("Rendering Dashboard");
@@ -28,29 +40,8 @@ public class TrainerAssess extends Controller
 
         List<Assessment> assessmentList = member.assessmentList;
 
-        double bmi = Analytics.calculateBMI(member, member.assessmentList.get(assessmentList.size() - 1));
+        String weightIndicator = Analytics.isIdealBodyWeight(member);
 
-        String bmiCategory = Analytics.determineBMICategory(bmi);
-
-        String weightIndicator = weightIndicatorColour(bmiCategory);
-
-        render("trainerassess.html", member, assessmentList, bmi, bmiCategory, weightIndicator);
-    }
-
-    public static String weightIndicatorColour(String bmiCategory){
-
-        String colour;
-
-        if(bmiCategory.contains("SEVERELY")){
-            colour = "red";
-        }
-        else if(!bmiCategory.equals("NORMAL")){
-            colour = "orange";
-        }
-        else{
-            colour = "green";
-        }
-
-        return colour;
+        render("trainerassess.html", member, assessmentList, weightIndicator);
     }
 }

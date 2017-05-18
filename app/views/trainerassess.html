@@ -63,7 +63,7 @@
           </div>
           <div class="statistic">
             <div class="value">
-              <i class="heartbeat icon"></i>${bmi}
+              <i class="heartbeat icon"></i>${member.getBMI()}
             </div>
             <div class="label">
               BMI
@@ -74,46 +74,60 @@
               <i class="doctor icon"></i>
             </div>
             <div class="label">
-              ${bmiCategory}
+              ${member.getBMICategory()}
             </div>
           </div>
         </div>
       </form>
 
-      <table class = "ui table middle aligned segment">
-        <thead>
-        <tr>
-          <th>Weight</th>
-          <th>Chest</th>
-          <th>Thigh</th>
-          <th>Upper Arm</th>
-          <th>Waist</th>
-          <th>Hips</th>
-          <th>Comments</th>
-        </tr>
-        </thead>
-        <tbody>
-          #{list items:assessmentList, as:'assessments'}
-          <tr>
-            <td>${assessments.weight}</td>
-            <td>${assessments.chest}</td>
-            <td>${assessments.thigh}</td>
-            <td>${assessments.upperArm}</td>
-            <td>${assessments.waist}</td>
-            <td>${assessments.hips}</td>
-            <td>${assessments.comment}</td>
-            <form class="ui stacked segment form" action="/dashboard/addTodo" method="POST">
-              <div class="field">
-                <label>Add Comment</label>
-                <input placeholder="Comment" type="text" name="comment">
+      #{list items:assessmentList, as:'assessments'}
+      <div class="ui releaxed divided items">
+        <div class="item">
+          <div class="content">
+            <div class="ui horizontal divider">
+              <i class="bar chart icon"></i>
+              Assessment #${assessments.id}
+            </div>
+            <table class = "ui celled table middle aligned segment">
+              <thead>
+              <tr>
+                <th>Weight</th>
+                <th>Chest</th>
+                <th>Thigh</th>
+                <th>Upper Arm</th>
+                <th>Waist</th>
+                <th>Hips</th>
+                <th>Comments</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>${assessments.weight}</td>
+                <td>${assessments.chest}</td>
+                <td>${assessments.thigh}</td>
+                <td>${assessments.upperArm}</td>
+                <td>${assessments.waist}</td>
+                <td>${assessments.hips}</td>
+                <td>${assessments.comment}</td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="extra">
+              <div class="ui form">
+                <div class="field">
+                  <label>Add Comment</label>
+                  <input placeholder="Comment" type="text" name="comment">
+                </div>
               </div>
-              <button class="ui blue submit button">Add Comment</button>
-          </tr>
+              <div class="ui left floated primary button">
+                Add Comment
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-          </form>
-          #{/list}
-        </tbody>
-      </table>
+      #{/list}
     </section>
   </div>
 </div>
