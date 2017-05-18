@@ -75,30 +75,30 @@ public class Analytics{
      *
      * @return Is the person at their ideal body weight
      */
-    public static String isIdealBodyWeight(Member member){
+    public static String isIdealBodyWeight(double height, double weight, String gender){
         //60 inches = 5ft
-        double heightInches = convertHeightMetresToInches(member.getHeight());
+        double heightInches = convertHeightMetresToInches(height);
         double idealWeight = 0.0;
-        Assessment lastAssessment = member.assessmentList.get(member.assessmentList.size() - 1);
+
         if(heightInches <= 60){
-            if(member.gender.equals("Male")){
+            if(gender.equals("Male")){
                 idealWeight = 50.0;
             }
             else{
                 idealWeight = 45.5;
             }
         }
-        else if(member.gender.equals("Male")){
+        else if(gender.equals("Male")){
             idealWeight = 50 + (2.3 * (heightInches - 60));
         }
-        else if (member.gender.equals("Female")){
+        else if (gender.equals("Female")){
             idealWeight = 45.5 + (2.3 * (heightInches - 60));
         }
 
-        if(idealWeight >= (lastAssessment.getWeight() - 2) && idealWeight <= (lastAssessment.getWeight() + 2)){
+        if(idealWeight >= (weight - 2) && idealWeight <= (weight + 2)){
             return "green";
         }
-        else if(idealWeight >= (lastAssessment.getWeight() - 5) && idealWeight <= (lastAssessment.getWeight() + 5)){
+        else if(idealWeight >= (weight - 5) && idealWeight <= (weight + 5)){
             return "orange";
         }
         else{

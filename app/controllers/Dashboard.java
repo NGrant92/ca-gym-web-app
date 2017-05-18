@@ -19,10 +19,10 @@ public class Dashboard extends Controller
         redirect("/dashboard");
     }
 
-    public static void deleteAssessment(Long ID, Long assessID) {
+    public static void deleteAssessment(Long id, Long assessmentid) {
 
-        Member member = Member.findById(ID);
-        Assessment remAssess = Assessment.findById(assessID);
+        Member member = Member.findById(id);
+        Assessment remAssess = Assessment.findById(assessmentid);
         member.assessmentList.remove(remAssess);
         member.save();
         remAssess.delete();
@@ -60,8 +60,6 @@ public class Dashboard extends Controller
 
         List<Todo> todoList = member.todoList;
 
-        String weightIndicator = Analytics.isIdealBodyWeight(member);
-
-        render("dashboard.html", member, assessmentList, todoList, weightIndicator);
+        render("dashboard.html", member, assessmentList, todoList);
     }
 }

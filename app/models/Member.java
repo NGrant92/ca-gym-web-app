@@ -51,36 +51,31 @@ public class Member extends Model {
     }
 
     public double getBMI(){
-        double lastWeight;
-        if(assessmentList.size() > 0){
-            lastWeight = assessmentList.get(assessmentList.size() - 1).weight;
-        }
-        else{
-            lastWeight = weight;
-        }
-        return Analytics.calculateBMI(height, lastWeight);
+
+        return Analytics.calculateBMI(height, latestWeight());
     }
 
     public String getBMICategory(){
         return Analytics.determineBMICategory(getBMI());
     }
 
-    public String weightIndicatorColour(){
+    public String idealBodyWeight(){
+       return Analytics.isIdealBodyWeight(height, latestWeight(), gender);
+    }
 
-        String bmiCategory = getBMICategory();
-        String colour;
-
-        if(bmiCategory.contains("SEVERELY")){
-            colour = "red";
-        }
-        else if(!bmiCategory.equals("NORMAL")){
-            colour = "orange";
+    public double latestWeight(){
+        double lastWeight;
+        if(assessmentList.size() > 0){
+            return assessmentList.get(assessmentList.size() - 1).weight;
         }
         else{
-            colour = "green";
+            return weight;
         }
+    }
 
-        return colour;
+    public String getTrend(){
+
+        return "null";
     }
 
     /**

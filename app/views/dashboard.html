@@ -55,7 +55,7 @@
         <div class="ui three statistics">
           <div class="statistic">
             <div class="value">
-              <i class="${weightIndicator} dashboard icon"></i>
+              <i class="${member.idealBodyWeight()} dashboard icon"></i>
             </div>
             <div class="label">
               Ideal Weight Indicator
@@ -89,7 +89,9 @@
           <th>Upper Arm</th>
           <th>Waist</th>
           <th>Hips</th>
+          <th>Trend</th>
           <th>Comments</th>
+          <th></th>
         </tr>
         </thead>
         <tbody>
@@ -101,7 +103,9 @@
             <td>${assessments.upperArm}</td>
             <td>${assessments.waist}</td>
             <td>${assessments.hips}</td>
+            <td><i class="large smile icon"></i></td>
             <td>${assessments.comment}</td>
+            <td><a href="/dashboard/${member.id}/deleteAssessment/${assessments.id}" class="ui icon button"><i class="trash icon"></i></a></td>
           </tr>
           #{/list}
         </tbody>
@@ -157,7 +161,7 @@
             #{list items:todoList, as:'todo'}
             <tr>
               <td>${todo.comment}</td>
-              <td> <a href="/dashboard/${member.id}/deleteTodo/${todo.id} " class="ui tiny red button "> Delete </a> </td>
+              <td> <a href="/dashboard/${member.id}/deleteTodo/${todo.id}" class="ui tiny red button"> Delete </a> </td>
             </tr>
             #{/list}
           </div>

@@ -11,7 +11,7 @@ public class TrainerBoard extends Controller
 
         Trainer trainer = Accounts.getLoggedInTrainer();
 
-        List<Member> membersList = trainer.membersList;
+        List<Member> membersList = Member.findAll();
 
         render("trainerboard.html", trainer, membersList);
     }

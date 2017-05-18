@@ -21,10 +21,6 @@ public class Trainer extends Model {
     public String address;
     public String gender;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    public List<Member> membersList = new ArrayList<Member>();
-
-
     public Trainer(String firstname, String lastname, String email, String password, String address, String gender) {
         this.firstname = firstname;
         this.lastname = lastname;

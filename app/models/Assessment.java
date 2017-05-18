@@ -84,4 +84,12 @@ public class Assessment extends Model {
     public String getComment() {
         return comment;
     }
+
+    /**
+     * Sets a trainer's comment to a member's assessment
+     *
+     */
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }
