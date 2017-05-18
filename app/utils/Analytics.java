@@ -75,7 +75,7 @@ public class Analytics{
      *
      * @return Is the person at their ideal body weight
      */
-    public static String isIdealBodyWeight(double height, double weight, String gender){
+    public static double isIdealBodyWeight(double height, double weight, String gender){
         //60 inches = 5ft
         double heightInches = convertHeightMetresToInches(height);
         double idealWeight = 0.0;
@@ -95,15 +95,7 @@ public class Analytics{
             idealWeight = 45.5 + (2.3 * (heightInches - 60));
         }
 
-        if(idealWeight >= (weight - 2) && idealWeight <= (weight + 2)){
-            return "green";
-        }
-        else if(idealWeight >= (weight - 5) && idealWeight <= (weight + 5)){
-            return "orange";
-        }
-        else{
-            return "red";
-        }
+        return idealWeight;
     }
 
     /**

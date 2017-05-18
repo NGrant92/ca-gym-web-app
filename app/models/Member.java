@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.*;
+import java.lang.Math;
 
 @Entity
 public class Member extends Model {
@@ -60,7 +61,18 @@ public class Member extends Model {
     }
 
     public String idealBodyWeight(){
-       return Analytics.isIdealBodyWeight(height, latestWeight(), gender);
+
+        double idealWeight = Analytics.isIdealBodyWeight(height, latestWeight(), gender);
+
+        if(idealWeight >= (latestWeight() - 2) && idealWeight <= (latestWeight() + 2)){
+            return "green";
+        }
+        else if(idealWeight >= (latestWeight() - 5) && idealWeight <= (latestWeight() + 5)){
+            return "orange";
+        }
+        else{
+            return "red";
+        }
     }
 
     public double latestWeight(){
@@ -73,9 +85,37 @@ public class Member extends Model {
         }
     }
 
-    public String getTrend(){
+    public String getTrend(long assessmentid){
 
-        return "null";
+        Assessment currAssessment = Assessment.findById(assessmentid);
+
+        double idealWeight = Analytics.isIdealBodyWeight(height, latestWeight(), gender);
+        double currWeight = currAssessment.getWeight();
+        double prevWeight;
+
+        double currWeightDiff;
+        double prevWeightDiff;
+
+        if(assessmentid == 1){
+            prevWeight = weight;
+        }
+        else{
+            Assessment prevAssessment = Assessment.findById(assessmentid - 1);
+            prevWeight = prevAssessment.getWeight();
+        }
+
+        currWeightDiff = Math.abs(currWeight - idealWeight);
+        prevWeightDiff = Math.abs(prevWeight - idealWeight);
+
+        if(currWeightDiff < prevWeightDiff){
+            return "smile";
+        }
+        else if(prevWeightDiff < currWeightDiff){
+            return "frown";
+        }
+        else{
+            return "meh";
+        }
     }
 
     /**
