@@ -2,21 +2,24 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
+# Main pages
 GET     /                                                   Start.index
 GET     /dashboard                                          Dashboard.index
 GET     /trainerboard                                       TrainerBoard.index
 GET     /trainerassess/{memberid}                           TrainerAssess.index
 GET     /about                                              About.index
 
+# Dashboard page actions
 POST    /dashboard/addAssessment                            Dashboard.addAssessment
 POST    /dashboard/addTodo                                  Dashboard.addTodo
 GET     /dashboard/{id}/deleteAssessment/{assessmentid}     Dashboard.deleteAssessment
 GET     /dashboard/{id}/deleteTodo/{todoid}                 Dashboard.deleteTodo
 
+# Trainer Assessments page actions
 POST    /trainerassess/setComment/{memberid}/{assessid}     TrainerAssess.setComment
 GET     /trainerboard/deleteMember/{memberid}               TrainerBoard.deleteMember
 
+# Update settings page actions
 GET     /settings                                           Settings.index
 POST    /settings/setFirstName                              Settings.setName
 POST    /settings/setEmail                                  Settings.setEmail
@@ -25,12 +28,10 @@ POST    /settings/setGender                                 Settings.setGender
 POST    /settings/setHeight                                 Settings.setHeight
 POST    /settings/setWeight                                 Settings.setWeight
 
-
-
+# Accounts methods
 GET    /signup                                              Accounts.signup
 GET    /login                                               Accounts.login
 GET    /logout                                              Accounts.logout
-
 POST   /register                                            Accounts.register
 POST   /authenticate                                        Accounts.authenticate
 

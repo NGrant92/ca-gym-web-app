@@ -7,6 +7,13 @@ import java.text.SimpleDateFormat;
 
 import javax.persistence.Entity;
 
+/**
+ * This class is to create and store measurements for the member
+ *
+ * @author Niall Grant
+ * @version 2017.05.19
+ */
+
 @Entity
 public class Assessment extends Model {
     public double weight;
@@ -18,6 +25,15 @@ public class Assessment extends Model {
     public String comment;
     public Date date;
 
+    /**
+     * Constructor method for assessment object
+     * @param weight Member's measurement
+     * @param chest Member's measurement
+     * @param thigh Member's measurement
+     * @param upperArm Member's measurement
+     * @param waist Member's measurement
+     * @param hips Member's measurement
+     */
     public Assessment(double weight, double chest, double thigh, double upperArm, double waist, double hips) {
         this.weight = weight;
         this.chest = chest;
@@ -34,16 +50,20 @@ public class Assessment extends Model {
     //-------
 
     /**
-     * Returns the member's weight in kg
-     * @return The member's weight in kg
+     * Returns date the assessment was created
+     * @return date the assessment was created
      */
     public String getDate() {
 
+        //empty string to be returned
         String newDate;
 
+        //a method to outline the required format for how the date should be returned
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
+        //ensuring the date is not null
         if(date != null){
+            //formats the assessment date to the desired format
             newDate = dateFormat.format(date);
         }
         else{
@@ -112,7 +132,6 @@ public class Assessment extends Model {
 
     /**
      * Sets a trainer's comment to a member's assessment
-     *
      */
     public void setComment(String comment) {
         this.comment = comment;

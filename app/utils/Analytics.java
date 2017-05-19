@@ -3,9 +3,11 @@ import models.*;
 
 
 /**
- * Created by Niall on 24/04/2017.
+ * This class is to carry out various calculations with various measurements from the member
+ *
+ * @author Niall Grant
+ * @version 2017.05.19
  */
-
 public class Analytics{
 
 
