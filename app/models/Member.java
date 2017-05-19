@@ -168,7 +168,7 @@ public class Member extends Model {
         double prevWeightDiff;
 
         //checks wheter to assing prev weight to starting weight or to weight from an assessment
-        if(memberAssessments.indexOf(currAssessment) == 0){
+        if(memberAssessments.indexOf(currAssessment) == memberAssessments.size() - 1){
             prevWeight = weight;
         }
         else{
