@@ -30,6 +30,8 @@ public class TrainerAssess extends Controller
         Member member = Member.findById(memberid);
         //gets list of assessments for member to be used to re render page
         List<Assessment> assessmentList = member.assessmentList;
+        //inverts the assessment list so the latest assessment is first
+        Collections.reverse(assessmentList);
 
         //assessment to be commented
         Assessment commAssessment = Assessment.findById(assessid);
