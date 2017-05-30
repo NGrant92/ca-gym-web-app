@@ -1,7 +1,9 @@
 Heroku Link: https://ng-ca-gym-web.herokuapp.com/
+
 Member Login:
   1. Email: homer@simpson.com Password: secret
   2. Email: marge@simpson.com Password: secret
+  
 Trainer Login:
   1. Email: t1000@tmail.com Password: secret
 # ca-gym-web-app
